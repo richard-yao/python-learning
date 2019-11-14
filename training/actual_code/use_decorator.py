@@ -4,6 +4,8 @@
 """
 from functools import wraps
 
+_GLOBAL_PARAM = 0
+
 
 class Test(object):
 
