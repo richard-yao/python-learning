@@ -11,14 +11,17 @@ class Test(object):
         self.name = name
         self.age = age
 
-    def log_decorator(self):
-        print("step in")
-        """日志装饰器"""
-        def wrapper(*args, **kwargs):
-            print("%s is running" % self.__name__)
-            return self(*args, **kwargs)
-        return wrapper
+    def log_decorator(level):
+        print("step in with level: %s" % level)
 
-    @log_decorator
+        def decorator(func):
+            """日志装饰器"""
+            def wrapper(*args, **kwargs):
+                print("%s is running" % func.__name__)
+                return func(*args, **kwargs)
+            return wrapper
+        return decorator
+
+    @log_decorator(level=1)
     def count(self, num1: int, num2: int):
         print("The result of %d + %d = %d" % (num1, num2, (num1 + num2)))
