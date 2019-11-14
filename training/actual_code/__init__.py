@@ -8,7 +8,8 @@ from training.actual_code.use_decorator import Test
 def execute():
     """test using decorator"""
     test = Test()
-    test.count(21, 23)
+    # 打印带有装饰器的count方法名
+    print("call method %s with result: %s" % (test.count.__name__, test.count(21, 23)))
 
 
 if __name__ == "__main__":
