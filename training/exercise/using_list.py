@@ -3,6 +3,15 @@
 @date 2019/10/11 14:15
 """
 import sys
+import os
+
+
+def using_generator():
+    _list_file = (file for file in os.listdir('.'))
+    for x in _list_file:
+        print(x)
+    for x in _list_file:
+        print(x)
 
 
 def using_list_func():
@@ -32,12 +41,14 @@ def generate_language():
 
 
 def fib(n):
+    a, b = 0, 1
     for _ in range(n):
         a, b = b, a + b
         yield a
 
 
 def main():
+    print()
     for val in fib(20):
         print(val)
 
@@ -47,3 +58,4 @@ if __name__ == "__main__":
     using_generate_list()
     generate_language()
     main()
+    using_generator()
